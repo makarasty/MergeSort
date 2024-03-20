@@ -1,22 +1,24 @@
-﻿namespace MergeSortNamespace;
+﻿namespace MergeSortV1Namespace;
+
+using CommonNamespace;
 
 class Program
 {
 	static void Main()
 	{
-		int length = MyInputV2Int("Кількість елементів: ");
-		int minValue = MyInputV2Int("Мінімальне значення: ");
-		int maxValue = MyInputV2Int("Максимальне значення: ");
+		int length = Common.MyInputV2Int("Кількість елементів: ");
+		int minValue = Common.MyInputV2Int("Мінімальне значення: ");
+		int maxValue = Common.MyInputV2Int("Максимальне значення: ");
 
-		int[] unsortedArray = GenerateRandomArray(length, minValue, maxValue);
+		int[] unsortedArray = Common.GenerateRandomArray(length, minValue, maxValue);
 
 		Console.WriteLine("\nНесортований масив:");
-		PrintArray(unsortedArray);
+		Common.PrintArray(unsortedArray);
 
 		MergeSort(unsortedArray, 0, unsortedArray.Length - 1);
 
 		Console.WriteLine("\nСортований масив:");
-		PrintArray(unsortedArray);
+		Common.PrintArray(unsortedArray);
 
 	}
 	static void MergeSort(int[] array, int left, int right)
@@ -73,29 +75,5 @@ class Program
 		{
 			sourceArray[mergedIndex++] = rightPart[rightPartIndex++];
 		}
-	}
-	private static int MyInputV2Int(string text)
-	{
-		while (true)
-		{
-			Console.Write(text);
-			if (int.TryParse(Console.ReadLine(), out int result))
-			{
-				return result;
-			}
-			else
-			{
-				Console.WriteLine("Невірний формат числа. Спробуйте ще раз.");
-			}
-		}
-	}
-	static int[] GenerateRandomArray(int length, int minValue, int maxValue)
-	{
-		var random = new Random();
-		return Enumerable.Range(0, length).Select(_ => random.Next(minValue, maxValue + 1)).ToArray();
-	}
-	static void PrintArray(int[] array)
-	{
-		Console.WriteLine(string.Join(' ', array));
 	}
 }
