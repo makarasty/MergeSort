@@ -4,7 +4,7 @@ using CommonNamespace;
 
 class Program
 {
-	static void Main(string[] args)
+	static void Main()
 	{
 		int length = Common.MyInputV2Int("Кількість елементів: ");
 		int minValue = Common.MyInputV2Int("Мінімальне значення: ");
